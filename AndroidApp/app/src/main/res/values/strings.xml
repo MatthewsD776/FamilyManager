@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Family Manager</string>
+    <string name="app_name">Blocks</string>
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -10,13 +10,13 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="miner_lable">Miner</string>
-    <string name="ethereum_block_title">Ethereum Blocks</string>
-    <string name="block_number_label">Block Number</string>
+    <string name="ethereum_block_title">Latest Block</string>
+    <string name="block_number_label">Number</string>
     <string name="not_applicable">N/A</string>
-    <string name="transactions_label" >Transactions</string>
-    <string name="block_size_label">Block Size</string>
+    <string name="transactions_label">Transactions</string>
+    <string name="block_size_label">Size</string>
     <string name="timestamp_label">Timestamp</string>
     <string name="difficulty_label">Difficulty</string>
     <string name="nonce_label">Nonce</string>
-    <string name="block_parent_label">Block Parent</string>
+    <string name="block_parent_label">Parent Block</string>
 </resources>

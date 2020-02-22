@@ -11,185 +11,423 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".app.main.MainActivity">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/ethereum_block_title"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/blockNumberLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/block_number_label"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/blockMiner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:maxLength="10"
-        android:text="@android:string/unknownName"
-        app:layout_constraintBottom_toBottomOf="@+id/blockMinerLabel"
-        app:layout_constraintEnd_toEndOf="@+id/blockNumber"
-        app:layout_constraintStart_toStartOf="@+id/blockNumber"
-        app:layout_constraintTop_toTopOf="@+id/blockMinerLabel" />
+            <LinearLayout
+                android:id="@+id/timeStampLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/parentBlockLayout">
 
-    <TextView
-        android:id="@+id/blockNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@android:string/unknownName"
-        app:layout_constraintBottom_toBottomOf="@+id/blockNumberLabel"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/blockNumberLabel"
-        app:layout_constraintTop_toTopOf="@+id/blockNumberLabel" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/blockTimestamp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@android:string/unknownName"
-        app:layout_constraintBottom_toBottomOf="@+id/blockTimeLabel"
-        app:layout_constraintEnd_toEndOf="@+id/blockParent"
-        app:layout_constraintStart_toStartOf="@+id/blockParent"
-        app:layout_constraintTop_toTopOf="@+id/blockTimeLabel" />
+                    <View
+                        android:id="@+id/divider9"
+                        android:layout_width="1dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="24dp"
+                        android:background="?android:attr/listDivider"
+                        app:layout_constraintBottom_toBottomOf="@+id/blockTimeLabel"
+                        app:layout_constraintStart_toEndOf="@+id/blockTimeLabel"
+                        app:layout_constraintTop_toTopOf="@+id/blockTimeLabel" />
 
-    <TextView
-        android:id="@+id/blockParent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:maxLength="10"
-        android:maxLines="1"
-        android:text="@android:string/unknownName"
-        app:layout_constraintBottom_toBottomOf="@+id/blockParentLabel"
-        app:layout_constraintEnd_toEndOf="@+id/blockNonce"
-        app:layout_constraintStart_toStartOf="@+id/blockNonce"
-        app:layout_constraintTop_toTopOf="@+id/blockParentLabel" />
+                    <TextView
+                        android:id="@+id/blockTimestamp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:ellipsize="none"
+                        android:text="@android:string/unknownName"
+                        app:layout_constraintBottom_toBottomOf="@+id/blockTimeLabel"
+                        app:layout_constraintStart_toEndOf="@+id/divider9"
+                        app:layout_constraintTop_toTopOf="@+id/blockTimeLabel" />
 
-    <TextView
-        android:id="@+id/blockNonce"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@android:string/unknownName"
-        app:layout_constraintBottom_toBottomOf="@+id/blocNonceLabel"
-        app:layout_constraintEnd_toEndOf="@+id/blockDifficulty"
-        app:layout_constraintStart_toStartOf="@+id/blockDifficulty"
-        app:layout_constraintTop_toTopOf="@+id/blocNonceLabel" />
+                    <TextView
+                        android:id="@+id/blockTimeLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="32dp"
+                        android:text="@string/timestamp_label"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
 
-    <TextView
-        android:id="@+id/blockDifficulty"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@android:string/unknownName"
-        app:layout_constraintBottom_toBottomOf="@+id/blockDifficultyLabel"
-        app:layout_constraintEnd_toEndOf="@+id/blockSize"
-        app:layout_constraintStart_toStartOf="@+id/blockSize"
-        app:layout_constraintTop_toTopOf="@+id/blockDifficultyLabel" />
+            <LinearLayout
+                android:id="@+id/parentBlockLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/blockNonceLayout">
 
-    <TextView
-        android:id="@+id/blockSize"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@android:string/unknownName"
-        app:layout_constraintBottom_toBottomOf="@+id/blockSizeLabel"
-        app:layout_constraintEnd_toEndOf="@+id/blockTransactions"
-        app:layout_constraintStart_toStartOf="@+id/blockTransactions"
-        app:layout_constraintTop_toTopOf="@+id/blockSizeLabel" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/blockTransactions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@android:string/unknownName"
-        app:layout_constraintBottom_toBottomOf="@+id/blockTransactionsLabel"
-        app:layout_constraintEnd_toEndOf="@+id/blockMiner"
-        app:layout_constraintStart_toStartOf="@+id/blockMiner"
-        app:layout_constraintTop_toTopOf="@+id/blockTransactionsLabel" />
+                    <View
+                        android:id="@+id/divider10"
+                        android:layout_width="1dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="24dp"
+                        android:background="?android:attr/listDivider"
+                        app:layout_constraintBottom_toBottomOf="@+id/blockParentLabel"
+                        app:layout_constraintStart_toEndOf="@+id/blockParentLabel"
+                        app:layout_constraintTop_toTopOf="@+id/blockParentLabel" />
 
-    <TextView
-        android:id="@+id/blockMinerLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/miner_lable"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintEnd_toEndOf="@+id/blockNumberLabel"
-        app:layout_constraintStart_toStartOf="@+id/blockNumberLabel"
-        app:layout_constraintTop_toBottomOf="@+id/blockNumberLabel" />
+                    <TextView
+                        android:id="@+id/blockParent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:maxLength="10"
+                        android:maxLines="1"
+                        android:text="@android:string/unknownName"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/divider10"
+                        app:layout_constraintTop_toTopOf="@+id/blockParentLabel" />
 
-    <TextView
-        android:id="@+id/blockTransactionsLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/transactions_label"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintEnd_toEndOf="@+id/blockNumberLabel"
-        app:layout_constraintStart_toStartOf="@+id/blockNumberLabel"
-        app:layout_constraintTop_toBottomOf="@+id/blockMinerLabel" />
+                    <TextView
+                        android:id="@+id/blockParentLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="32dp"
+                        android:text="@string/block_parent_label"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
 
-    <TextView
-        android:id="@+id/blockSizeLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/block_size_label"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintEnd_toEndOf="@+id/blockNumberLabel"
-        app:layout_constraintStart_toStartOf="@+id/blockNumberLabel"
-        app:layout_constraintTop_toBottomOf="@+id/blockTransactionsLabel" />
+            <LinearLayout
+                android:id="@+id/blockNonceLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/blockDifficultyLayout">
 
-    <TextView
-        android:id="@+id/blockTimeLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/timestamp_label"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintEnd_toEndOf="@+id/blockNumberLabel"
-        app:layout_constraintStart_toStartOf="@+id/blockNumberLabel"
-        app:layout_constraintTop_toBottomOf="@+id/blockParentLabel" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/blockDifficultyLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/difficulty_label"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintEnd_toEndOf="@+id/blockNumberLabel"
-        app:layout_constraintStart_toStartOf="@+id/blockNumberLabel"
-        app:layout_constraintTop_toBottomOf="@+id/blockSizeLabel" />
+                    <View
+                        android:id="@+id/divider7"
+                        android:layout_width="1dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="24dp"
+                        android:background="?android:attr/listDivider"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/blocNonceLabel"
+                        app:layout_constraintTop_toTopOf="@+id/blocNonceLabel" />
 
-    <TextView
-        android:id="@+id/blocNonceLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/nonce_label"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintEnd_toEndOf="@+id/blockNumberLabel"
-        app:layout_constraintStart_toStartOf="@+id/blockNumberLabel"
-        app:layout_constraintTop_toBottomOf="@+id/blockDifficultyLabel" />
+                    <TextView
+                        android:id="@+id/blockNonce"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:text="@android:string/unknownName"
+                        app:layout_constraintBottom_toBottomOf="@+id/blocNonceLabel"
+                        app:layout_constraintStart_toEndOf="@+id/divider7"
+                        app:layout_constraintTop_toTopOf="@+id/blocNonceLabel" />
 
-    <TextView
-        android:id="@+id/blockParentLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/block_parent_label"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintEnd_toEndOf="@+id/blockNumberLabel"
-        app:layout_constraintStart_toStartOf="@+id/blockNumberLabel"
-        app:layout_constraintTop_toBottomOf="@+id/blocNonceLabel" />
+                    <TextView
+                        android:id="@+id/blocNonceLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="32dp"
+                        android:text="@string/nonce_label"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/blockDifficultyLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/blockSizeLayout">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <View
+                        android:id="@+id/divider6"
+                        android:layout_width="1dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="24dp"
+                        android:background="?android:attr/listDivider"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/blockDifficultyLabel"
+                        app:layout_constraintTop_toTopOf="@+id/blockDifficultyLabel" />
+
+                    <TextView
+                        android:id="@+id/blockDifficultyLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="32dp"
+                        android:text="@string/difficulty_label"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/blockDifficulty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:text="@android:string/unknownName"
+                        app:layout_constraintBottom_toBottomOf="@+id/blockDifficultyLabel"
+                        app:layout_constraintStart_toEndOf="@+id/divider6"
+                        app:layout_constraintTop_toTopOf="@+id/blockDifficultyLabel" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/blockSizeLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/transactionsLayout">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <View
+                        android:id="@+id/divider5"
+                        android:layout_width="1dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="24dp"
+                        android:background="?android:attr/listDivider"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/blockSizeLabel"
+                        app:layout_constraintTop_toTopOf="@+id/blockSizeLabel" />
+
+                    <TextView
+                        android:id="@+id/blockSize"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:text="@android:string/unknownName"
+                        app:layout_constraintBottom_toBottomOf="@+id/blockSizeLabel"
+                        app:layout_constraintStart_toEndOf="@+id/divider5"
+                        app:layout_constraintTop_toTopOf="@+id/blockSizeLabel" />
+
+                    <TextView
+                        android:id="@+id/blockSizeLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="32dp"
+                        android:text="@string/block_size_label"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/transactionsLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/blockMinerLayout">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <View
+                        android:id="@+id/divider4"
+                        android:layout_width="1dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="24dp"
+                        android:background="?android:attr/listDivider"
+                        app:layout_constraintBottom_toBottomOf="@+id/blockTransactionsLabel"
+                        app:layout_constraintStart_toEndOf="@+id/blockTransactionsLabel"
+                        app:layout_constraintTop_toTopOf="@+id/blockTransactionsLabel" />
+
+                    <TextView
+                        android:id="@+id/blockTransactions"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:text="@android:string/unknownName"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/divider4"
+                        app:layout_constraintTop_toTopOf="@+id/blockTransactionsLabel" />
+
+                    <TextView
+                        android:id="@+id/blockTransactionsLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="32dp"
+                        android:text="@string/transactions_label"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/blockMinerLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/blockNumberLayout">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <View
+                        android:id="@+id/divider3"
+                        android:layout_width="1dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="24dp"
+                        android:background="?android:attr/listDivider"
+                        app:layout_constraintBottom_toBottomOf="@+id/blockMinerLabel"
+                        app:layout_constraintStart_toEndOf="@+id/blockMinerLabel"
+                        app:layout_constraintTop_toTopOf="@+id/blockMinerLabel" />
+
+                    <TextView
+                        android:id="@+id/blockMiner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:maxLength="10"
+                        android:text="@android:string/unknownName"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/divider3"
+                        app:layout_constraintTop_toTopOf="@+id/blockMinerLabel" />
+
+                    <TextView
+                        android:id="@+id/blockMinerLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="32dp"
+                        android:text="@string/miner_lable"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/titleLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/ethereum_block_title"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/blockNumberLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleLayout">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <View
+                        android:id="@+id/blockDivider"
+                        android:layout_width="1dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_weight="1"
+                        android:background="?android:attr/listDivider"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/blockNumberLabel"
+                        app:layout_constraintTop_toTopOf="@+id/blockNumberLabel" />
+
+                    <TextView
+                        android:id="@+id/blockNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:text="@android:string/unknownName"
+                        app:layout_constraintBottom_toBottomOf="@+id/blockNumberLabel"
+                        app:layout_constraintStart_toEndOf="@+id/blockDivider"
+                        app:layout_constraintTop_toTopOf="@+id/blockNumberLabel" />
+
+                    <TextView
+                        android:id="@+id/blockNumberLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="32dp"
+                        android:text="@string/block_number_label"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
