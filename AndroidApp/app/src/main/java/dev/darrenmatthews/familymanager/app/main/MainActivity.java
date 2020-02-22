@@ -12,15 +12,12 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
-import org.reactivestreams.Subscription;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.core.DefaultBlockParameterName;
 import org.web3j.protocol.core.methods.response.EthBlock.Block;
 import org.web3j.protocol.core.methods.response.Web3ClientVersion;
-import org.web3j.protocol.http.HttpService;
 import org.web3j.protocol.websocket.WebSocketService;
 
-import java.io.IOException;
 import java.math.BigInteger;
 import java.security.Provider;
 import java.security.Security;
@@ -31,8 +28,6 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 import dev.darrenmatthews.familymanager.R;
-import dev.darrenmatthews.familymanager.app.async.GenerateWeb3;
-import dev.darrenmatthews.familymanager.app.async.OnEventListener;
 import io.reactivex.disposables.Disposable;
 
 public class MainActivity extends AppCompatActivity {
@@ -43,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.latest_block);
         setupBouncyCastle();
         unsafeThreadPolicy();
 
@@ -72,14 +67,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if(web3 != null) {
-            Disposable web3subscription = web3.blockFlowable(false).subscribe(
-                    ethBlock -> {
-                        Log.i("Web3", "Got new Block");
-                        Block block = ethBlock.getBlock();
-                        visualiseBlock(block);
-                    },
-                    Throwable::printStackTrace
-            );
+            createLatestBlockSubscription();
         }
 
         //Connect to Web 3 via Async Thing
@@ -110,8 +98,22 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onDestroy() {
-        web3Subscription.dispose();
         super.onDestroy();
+        if(web3Subscription != null){
+            web3Subscription.dispose();
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void createLatestBlockSubscription() {
+        web3Subscription = web3.blockFlowable(false).subscribe(
+                ethBlock -> {
+                    Log.i("Web3", "Got new Block");
+                    Block block = ethBlock.getBlock();
+                    visualiseBlock(block);
+                },
+                Throwable::printStackTrace
+        );
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
