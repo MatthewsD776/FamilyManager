@@ -1,4 +1,4 @@
-package dev.darrenmatthews.familymanager.ui.login;
+package dev.darrenmatthews.familymanager.app.async;
 
 public interface OnEventListener<T> {
     void onSuccess(T object);

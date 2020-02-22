@@ -9,38 +9,187 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".ui.login.LoginActivity">
+    tools:context=".app.main.MainActivity">
 
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="Web 3 Information"
+        android:text="@string/ethereum_block_title"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/version"
+        android:id="@+id/blockNumberLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Version : "
+        android:layout_marginTop="32dp"
+        android:text="@string/block_number_label"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        app:layout_constraintEnd_toEndOf="@+id/title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/blockMiner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Something"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintEnd_toEndOf="@+id/title"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/version" />
+        android:maxLength="10"
+        android:text="@android:string/unknownName"
+        app:layout_constraintBottom_toBottomOf="@+id/blockMinerLabel"
+        app:layout_constraintEnd_toEndOf="@+id/blockNumber"
+        app:layout_constraintStart_toStartOf="@+id/blockNumber"
+        app:layout_constraintTop_toTopOf="@+id/blockMinerLabel" />
+
+    <TextView
+        android:id="@+id/blockNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@android:string/unknownName"
+        app:layout_constraintBottom_toBottomOf="@+id/blockNumberLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/blockNumberLabel"
+        app:layout_constraintTop_toTopOf="@+id/blockNumberLabel" />
+
+    <TextView
+        android:id="@+id/blockTimestamp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@android:string/unknownName"
+        app:layout_constraintBottom_toBottomOf="@+id/blockTimeLabel"
+        app:layout_constraintEnd_toEndOf="@+id/blockParent"
+        app:layout_constraintStart_toStartOf="@+id/blockParent"
+        app:layout_constraintTop_toTopOf="@+id/blockTimeLabel" />
+
+    <TextView
+        android:id="@+id/blockParent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLength="10"
+        android:maxLines="1"
+        android:text="@android:string/unknownName"
+        app:layout_constraintBottom_toBottomOf="@+id/blockParentLabel"
+        app:layout_constraintEnd_toEndOf="@+id/blockNonce"
+        app:layout_constraintStart_toStartOf="@+id/blockNonce"
+        app:layout_constraintTop_toTopOf="@+id/blockParentLabel" />
+
+    <TextView
+        android:id="@+id/blockNonce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@android:string/unknownName"
+        app:layout_constraintBottom_toBottomOf="@+id/blocNonceLabel"
+        app:layout_constraintEnd_toEndOf="@+id/blockDifficulty"
+        app:layout_constraintStart_toStartOf="@+id/blockDifficulty"
+        app:layout_constraintTop_toTopOf="@+id/blocNonceLabel" />
+
+    <TextView
+        android:id="@+id/blockDifficulty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@android:string/unknownName"
+        app:layout_constraintBottom_toBottomOf="@+id/blockDifficultyLabel"
+        app:layout_constraintEnd_toEndOf="@+id/blockSize"
+        app:layout_constraintStart_toStartOf="@+id/blockSize"
+        app:layout_constraintTop_toTopOf="@+id/blockDifficultyLabel" />
+
+    <TextView
+        android:id="@+id/blockSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@android:string/unknownName"
+        app:layout_constraintBottom_toBottomOf="@+id/blockSizeLabel"
+        app:layout_constraintEnd_toEndOf="@+id/blockTransactions"
+        app:layout_constraintStart_toStartOf="@+id/blockTransactions"
+        app:layout_constraintTop_toTopOf="@+id/blockSizeLabel" />
+
+    <TextView
+        android:id="@+id/blockTransactions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@android:string/unknownName"
+        app:layout_constraintBottom_toBottomOf="@+id/blockTransactionsLabel"
+        app:layout_constraintEnd_toEndOf="@+id/blockMiner"
+        app:layout_constraintStart_toStartOf="@+id/blockMiner"
+        app:layout_constraintTop_toTopOf="@+id/blockTransactionsLabel" />
+
+    <TextView
+        android:id="@+id/blockMinerLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/miner_lable"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toEndOf="@+id/blockNumberLabel"
+        app:layout_constraintStart_toStartOf="@+id/blockNumberLabel"
+        app:layout_constraintTop_toBottomOf="@+id/blockNumberLabel" />
+
+    <TextView
+        android:id="@+id/blockTransactionsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/transactions_label"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toEndOf="@+id/blockNumberLabel"
+        app:layout_constraintStart_toStartOf="@+id/blockNumberLabel"
+        app:layout_constraintTop_toBottomOf="@+id/blockMinerLabel" />
+
+    <TextView
+        android:id="@+id/blockSizeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/block_size_label"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toEndOf="@+id/blockNumberLabel"
+        app:layout_constraintStart_toStartOf="@+id/blockNumberLabel"
+        app:layout_constraintTop_toBottomOf="@+id/blockTransactionsLabel" />
+
+    <TextView
+        android:id="@+id/blockTimeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/timestamp_label"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toEndOf="@+id/blockNumberLabel"
+        app:layout_constraintStart_toStartOf="@+id/blockNumberLabel"
+        app:layout_constraintTop_toBottomOf="@+id/blockParentLabel" />
+
+    <TextView
+        android:id="@+id/blockDifficultyLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/difficulty_label"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toEndOf="@+id/blockNumberLabel"
+        app:layout_constraintStart_toStartOf="@+id/blockNumberLabel"
+        app:layout_constraintTop_toBottomOf="@+id/blockSizeLabel" />
+
+    <TextView
+        android:id="@+id/blocNonceLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/nonce_label"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toEndOf="@+id/blockNumberLabel"
+        app:layout_constraintStart_toStartOf="@+id/blockNumberLabel"
+        app:layout_constraintTop_toBottomOf="@+id/blockDifficultyLabel" />
+
+    <TextView
+        android:id="@+id/blockParentLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/block_parent_label"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintEnd_toEndOf="@+id/blockNumberLabel"
+        app:layout_constraintStart_toStartOf="@+id/blockNumberLabel"
+        app:layout_constraintTop_toBottomOf="@+id/blocNonceLabel" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

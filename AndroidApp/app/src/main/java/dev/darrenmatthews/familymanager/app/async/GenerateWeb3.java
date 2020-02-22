@@ -1,4 +1,4 @@
-package dev.darrenmatthews.familymanager;
+package dev.darrenmatthews.familymanager.app.async;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -9,13 +9,13 @@ import org.web3j.protocol.http.HttpService;
 
 import java.io.IOException;
 
-import dev.darrenmatthews.familymanager.ui.login.OnEventListener;
+import dev.darrenmatthews.familymanager.app.async.OnEventListener;
 
-public class GenerateWeb3 extends AsyncTask<Void, Void, String> {
+public class GenerateWeb3 extends AsyncTask<Void, Void, Web3j> {
     private Exception exception;
 
     private Context myContext;
-    private OnEventListener<String> myCallBack;
+    private OnEventListener<Web3j> myCallBack;
 
     public GenerateWeb3(Context context, OnEventListener callback){
         this.myCallBack = callback;
@@ -23,19 +23,11 @@ public class GenerateWeb3 extends AsyncTask<Void, Void, String> {
     }
 
     @Override
-    protected String doInBackground(Void... context) {
-        try {
-            Web3j web3 = Web3j.build(new HttpService("http://192.168.0.58:7545"));
-            Web3ClientVersion web3ClientVersion = web3.web3ClientVersion().send();
-            return web3ClientVersion.getWeb3ClientVersion();
-        } catch (IOException e) {
-            exception = e;
-        }
-
-        return null;
+    protected Web3j doInBackground(Void... context) {
+        return Web3j.build(new HttpService("https://mainnet.infura.io/v3/73ac281be9e54b2a85353e2aea8f9629"));
     }
 
-    protected void onPostExecute(String result){
+    protected void onPostExecute(Web3j result){
         if(this.myCallBack != null) {
             if(this.exception == null){
                 myCallBack.onSuccess(result);
